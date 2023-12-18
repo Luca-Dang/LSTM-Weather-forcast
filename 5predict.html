@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>7-Day Weather Forecast</title>
+    <style>
+        /* Styles for container, forecast block, and images */
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        .forecast-block, .forecast-grid div {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 10px;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+        .forecast-block {
+            display: inline-block;
+            width: 150px; /* Width of forecast blocks */
+        }
+        .forecast-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .weather-image, .weather-image-grid {
+            width: 100px; /* Width of images */
+            height: auto;
+            margin-top: 10px;
+        }
+        /* Styles for the back button */
+        .back-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Predictions</h1>
+        <!-- Date Picker -->
+        <input type="date" id="datePicker" onchange="updateForecast()">
+        <br><br>
+
+        <!-- 5-Day Forecast Blocks -->
+        <div id="forecastContainer">
+            <!-- Dynamically filled by JavaScript -->
+        </div>
+
+        <!-- 7-Day Minimum Predictions Grid -->
+        <div class="forecast-grid">
+            <!-- Placeholder images for each day -->
+            <div><img src="max_day1.jpg" alt="Max Day 1000" class="weather-image-grid"></div>
+            <div><img src="min_day1.jpg" alt="Max Day 2" class="weather-image-grid"></div>
+            <div><img src="max_day2.jpg" alt="Max Day 3" class="weather-image-grid"></div>
+            <div><img src="min_day2.jpg" alt="Min Day 1" class="weather-image-grid"></div>
+            <div><img src="max_day3.jpg" alt="Min Day 2" class="weather-image-grid"></div>
+            <div><img src="min_day3.jpg" alt="Min Day 3" class="weather-image-grid"></div>
+            <div><img src="max_day4.jpg" alt="Max Day 4" class="weather-image-grid"></div>
+            <div><img src="min_day4.jpg" alt="Max Day 5" class="weather-image-grid"></div>
+            <div><img src="max_day5.jpg" alt="Max Day 6" class="weather-image-grid"></div>
+            <div><img src="min_day5.jpg" alt="Min Day 4" class="weather-image-grid"></div>
+            <div><img src="max_day6.jpg" alt="Min Day 5" class="weather-image-grid"></div>
+            <div><img src="min_day6.jpg" alt="Min Day 6" class="weather-image-grid"></div>
+            <!-- <div><img src="min_day7.jpg" alt="Min Day 7" class="weather-image-grid"></div> -->
+        </div>
+
+        <!-- Back to Home button -->
+        <a href="newhome.html" class="back-button">Back to Home</a>
+    </div>
+
+    <script>
+        // JavaScript to dynamically update the forecast
+        function updateForecast() {
+            var selectedDate = document.getElementById('datePicker').value;
+            var forecastContainer = document.getElementById('forecastContainer');
+            forecastContainer.innerHTML = ''; // Clear previous forecast
+
+            // This would be replaced with your actual logic to fetch and display forecast data
+            for (var i = 0; i < 5; i++) {
+                var forecastBlock = document.createElement('div');
+                forecastBlock.className = 'forecast-block';
+                var forecastImg = document.createElement('img');
+                forecastImg.src = 'forecast_day' + (i + 1) + '.jpg'; // Placeholder src
+                forecastImg.alt = 'Weather Forecast Day ' + (i + 1);
+                forecastImg.className = 'weather-image';
+                forecastBlock.appendChild(forecastImg);
+                forecastContainer.appendChild(forecastBlock);
+            }
+        }
+    </script>
+</body>
+</html>
